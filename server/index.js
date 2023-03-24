@@ -8,6 +8,7 @@ import helmet from 'helmet'
 import path from 'path'
 import morgan from 'morgan'
 import { fileURLToPath } from 'url'
+import{ register } from './controllers/auth.js'
 
 // CONFIGURATION
 const __filename = fileURLToPath(import.meta.url)
@@ -32,6 +33,7 @@ const storage = multer.diskStorage({
 })
 const upload = multer({storage})
 
+app.post("/auth/register", upload.single("picture"), register)
 
 const CONNECTION_URL = 'mongodb+srv://wassim:123@cluster0.zjrbozg.mongodb.net/?retryWrites=true&w=majority'
 const PORT = process.env.PORT || 7070
