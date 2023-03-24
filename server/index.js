@@ -9,6 +9,7 @@ import path from 'path'
 import morgan from 'morgan'
 import { fileURLToPath } from 'url'
 import authRoutes from "./routes/auth.js"
+import userRoute from "./routes/users.js"
 import{ register } from './controllers/auth.js'
 
 // CONFIGURATION
@@ -39,6 +40,7 @@ app.post("/auth/register", upload.single("picture"), register)
 // ROUTES 
 
 app.use("/auth", authRoutes)
+app.use("/users", userRoute)
 
 const CONNECTION_URL = 'mongodb://127.0.0.1:27017/share'
 const PORT = process.env.PORT || 8000
