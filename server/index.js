@@ -8,6 +8,7 @@ import helmet from 'helmet'
 import path from 'path'
 import morgan from 'morgan'
 import { fileURLToPath } from 'url'
+import authRoutes from "./routes/auth.js"
 import{ register } from './controllers/auth.js'
 
 // CONFIGURATION
@@ -35,8 +36,12 @@ const upload = multer({storage})
 
 app.post("/auth/register", upload.single("picture"), register)
 
-const CONNECTION_URL = 'mongodb+srv://wassim:123@cluster0.zjrbozg.mongodb.net/?retryWrites=true&w=majority'
-const PORT = process.env.PORT || 7070
+// ROUTES 
+
+app.use("/auth", authRoutes)
+
+const CONNECTION_URL = 'mongodb://127.0.0.1:27017/share'
+const PORT = process.env.PORT || 8000
 mongoose.connect(CONNECTION_URL, { 
     useNewUrlParser: true,
     useUnifiedTopology: true
