@@ -56,7 +56,7 @@ mongoose.connect(CONNECTION_URL, {
     useNewUrlParser: true,
     useUnifiedTopology: true
 }).then(() =>app.listen(PORT,()=>console.log(`Serverrunning on port  ${PORT}`)))
-    User.insertMany(users)
-    Post.insertMany(posts)
+    // User.insertMany(users)
+    // Post.insertMany(posts)
   .catch((error)=>console.log(error.message))
 
