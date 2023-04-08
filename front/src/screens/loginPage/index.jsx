@@ -1,8 +1,13 @@
+import { Box, Typography, useTheme, useMediaQuery } from "@mui/material";
+import Form from "./Form";
 
-const LoginPage = ()=> {
-    return (
-      <div>login page </div>
-    )
-  }
+const LoginPage = () => {
   
-  export default LoginPage
+  return (
+    <Box>
+      
+    </Box>
+  );
+};
+
+export default LoginPage;
