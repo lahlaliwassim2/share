@@ -3,10 +3,9 @@ import HomePage from "screens/homePage";
 import LoginPage from "screens/loginPage";
 import ProfilePage from "screens/profilePage";
 import { useMemo } from "react"
-import { useSearchParams } from "react-router-dom";
 import { CssBaseline, ThemeProvider } from "@mui/material";
 import { createTheme } from "@mui/material/styles";
-import { themeSettings } from "theme";
+import { themeSettings } from "./theme";
 import { useSelector } from "react-redux";
 import state from "state";
 
