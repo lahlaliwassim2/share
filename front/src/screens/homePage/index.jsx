@@ -1,7 +1,8 @@
+import Navbar from "screens/navBar"
 
 const HomePage = ()=> {
   return (
-    <div> Home page </div>
+   <Navbar /> 
   )
 }
 
