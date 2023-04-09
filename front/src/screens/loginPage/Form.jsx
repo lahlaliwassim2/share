@@ -72,9 +72,6 @@ const Form = () => {
     );
     const savedUser = await savedUserResponse.json();
     onSubmitProps.resetForm();
-    //   console.log(onSubmitProps.resetForm);
-      console.log(values);
-      console.log(formData);
 
     if (savedUser) {
       setPageType("login");
@@ -96,7 +93,6 @@ const Form = () => {
           token: loggedIn.token,
         })
       );
-      console.log(onSubmitProps);
       navigate("/home");
     }
   };
