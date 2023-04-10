@@ -43,3 +43,30 @@ Publier une image
 
 Voir les publications de ses amis
 
+# Contribuer
+
+Les contributions sont les bienvenues ! Voici les étapes à suivre pour contribuer à ce projet :
+
+1-Effectuer un fork du repository
+
+2-Créer une branche pour votre fonctionnalité :
+
+    git checkout -b feature/ma-nouvelle-fonctionnalite
+
+3-Faire les modifications nécessaires et tester le code
+
+4-Commit et push les modifications vers votre fork 
+
+    git add .
+    git commit -m "Ajout de ma nouvelle fonctionnalité"
+    git push origin feature/ma-nouvelle-fonctionnalite
+    
+5-Créer une Pull Request depuis votre fork vers le repository d'origine.
+
+
+# MERCI 
+
+## WASSIM LAHLALI 
+
+
+    
