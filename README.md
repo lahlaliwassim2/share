@@ -10,7 +10,7 @@
 
 1- Cloner le repository sur votre machine :
 
-    git clone https://github.com/NomUtilisateur/NomDuProjet.git
+    git clone https://github.com/NomUtilisateur/share.git
 
 2-Assurez-vous que Node.js est installé sur votre machine. Si ce n'est pas le cas, vous pouvez le télécharger et l'installer à partir de nodejs.org.
 
