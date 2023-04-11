@@ -46,6 +46,7 @@ const AdvertWidget = () => {
         {joke.value}
       </Typography>
       <button
+      onClick={getJoke}
       >Voir une autre</button>
     </WidgetWrapper>
   );

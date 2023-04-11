@@ -3,6 +3,7 @@ import {
   EditOutlined,
   LocationOnOutlined,
   WorkOutlineOutlined,
+  GitHubIcon
 } from "@mui/icons-material";
 import { Box, Typography, Divider, useTheme } from "@mui/material";
 import UserImage from "components/UserImage";
@@ -97,13 +98,13 @@ const UserWidget = ({ userId, picturePath }) => {
       {/* THIRD ROW */}
       <Box p="1rem 0">
         <FlexBetween mb="0.5rem">
-          <Typography color={medium}>Who's viewed your profile</Typography>
+          <Typography color={medium}>Nombre de visiteurs </Typography>
           <Typography color={main} fontWeight="500">
             {viewedProfile}
           </Typography>
         </FlexBetween>
         <FlexBetween>
-          <Typography color={medium}>Impressions of your post</Typography>
+          <Typography color={medium}>Nombre de reactions </Typography>
           <Typography color={main} fontWeight="500">
             {impressions}
           </Typography>
@@ -115,7 +116,7 @@ const UserWidget = ({ userId, picturePath }) => {
       {/* FOURTH ROW */}
       <Box p="1rem 0">
         <Typography fontSize="1rem" color={main} fontWeight="500" mb="1rem">
-          Social Profiles
+          Lien vers ...
         </Typography>
 
         <FlexBetween gap="1rem" mb="0.5rem">
@@ -124,6 +125,19 @@ const UserWidget = ({ userId, picturePath }) => {
             <Box>
               <Typography color={main} fontWeight="500">
                 Twitter
+              </Typography>
+              <Typography color={medium}>Social Network</Typography>
+            </Box>
+          </FlexBetween>
+          <EditOutlined sx={{ color: main }} />
+        </FlexBetween>
+
+        <FlexBetween gap="1rem" mb="0.5rem">
+          <FlexBetween gap="1rem">
+            <img src="../assets/5968846.png" width={26} alt="github" />
+            <Box>
+              <Typography color={main} fontWeight="500">
+                Github
               </Typography>
               <Typography color={medium}>Social Network</Typography>
             </Box>
