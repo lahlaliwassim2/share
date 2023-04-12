@@ -23,6 +23,9 @@ const registerSchema = yup.object().shape({
   password: yup.string().required("required"),
   location: yup.string().required("required"),
   occupation: yup.string().required("required"),
+  linkedin: yup.string().required("required"),
+  github: yup.string().required("required"),
+  twiter: yup.string().required("required"),
   picture: yup.string().required("required"),
 });
 
@@ -71,6 +74,7 @@ const Form = () => {
       }
     );
     const savedUser = await savedUserResponse.json();
+    console.log(savedUser);
     onSubmitProps.resetForm();
 
     if (savedUser) {
@@ -152,17 +156,17 @@ const Form = () => {
                   sx={{ gridColumn: "span 2" }}
                 />
                 <TextField
-                  label="Location"
+                  label="Société"
                   onBlur={handleBlur}
                   onChange={handleChange}
                   value={values.location}
                   name="location"
                   error={Boolean(touched.location) && Boolean(errors.location)}
                   helperText={touched.location && errors.location}
-                  sx={{ gridColumn: "span 4" }}
+                  sx={{ gridColumn: "span 2" }}
                 />
                 <TextField
-                  label="Occupation"
+                  label="Poste"
                   onBlur={handleBlur}
                   onChange={handleChange}
                   value={values.occupation}
@@ -171,7 +175,37 @@ const Form = () => {
                     Boolean(touched.occupation) && Boolean(errors.occupation)
                   }
                   helperText={touched.occupation && errors.occupation}
-                  sx={{ gridColumn: "span 4" }}
+                  sx={{ gridColumn: "span 2" }}
+                />
+                     <TextField
+                  label="Lien github"
+                  onBlur={handleBlur}
+                  onChange={handleChange}
+                  value={values.github}
+                  name="github"
+                  error={Boolean(touched.github) && Boolean(errors.github)}
+                  helperText={touched.github && errors.github}
+                  sx={{ gridColumn: "span 2" }}
+                />
+                <TextField
+                  label="Lien linkedin"
+                  onBlur={handleBlur}
+                  onChange={handleChange}
+                  value={values.linkedin}
+                  name="linkedin"
+                  error={Boolean(touched.linkedin) && Boolean(errors.linkedin)}
+                  helperText={touched.linkedin && errors.linkedin}
+                  sx={{ gridColumn: "span 1" }}
+                />
+                   <TextField
+                  label="Lien twiter"
+                  onBlur={handleBlur}
+                  onChange={handleChange}
+                  value={values.twiter}
+                  name="twiter"
+                  error={Boolean(touched.twiter) && Boolean(errors.twiter)}
+                  helperText={touched.twiter && errors.twiter}
+                  sx={{ gridColumn: "span 1" }}
                 />
                 <Box
                   gridColumn="span 4"
@@ -217,7 +251,7 @@ const Form = () => {
               name="email"
               error={Boolean(touched.email) && Boolean(errors.email)}
               helperText={touched.email && errors.email}
-              sx={{ gridColumn: "span 4" }}
+              sx={isRegister ? ({ gridColumn: "span 2" }) : ({ gridColumn: "span 4" })}
             />
             <TextField
               label="Password"
@@ -228,7 +262,7 @@ const Form = () => {
               name="password"
               error={Boolean(touched.password) && Boolean(errors.password)}
               helperText={touched.password && errors.password}
-              sx={{ gridColumn: "span 4" }}
+              sx={isRegister ? ({ gridColumn: "span 2" }) : ({ gridColumn: "span 4" })}
             />
           </Box>
 
