@@ -2,8 +2,7 @@ import {
   ManageAccountsOutlined,
   EditOutlined,
   LocationOnOutlined,
-  WorkOutlineOutlined,
-  GitHubIcon
+  WorkOutlineOutlined,  
 } from "@mui/icons-material";
 import { Box, Typography, Divider, useTheme } from "@mui/material";
 import UserImage from "components/UserImage";
@@ -12,7 +11,6 @@ import WidgetWrapper from "components/WidgetWrapper";
 import { useSelector } from "react-redux";
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-
 const UserWidget = ({ userId, picturePath }) => {
   const [user, setUser] = useState(null);
   const { palette } = useTheme();
@@ -28,6 +26,7 @@ const UserWidget = ({ userId, picturePath }) => {
       headers: { Authorization: `Bearer ${token}` },
     });
     const data = await response.json();
+    console.log(data);
     setUser(data);
   };
 
@@ -47,6 +46,9 @@ const UserWidget = ({ userId, picturePath }) => {
     viewedProfile,
     impressions,
     friends,
+    linkedin,
+    github,
+    twiter
   } = user;
 
   return (
@@ -126,7 +128,10 @@ const UserWidget = ({ userId, picturePath }) => {
               <Typography color={main} fontWeight="500">
                 Twitter
               </Typography>
-              <Typography color={medium}>Social Network</Typography>
+              <a href= {twiter} >
+              <Typography 
+               color={medium}>{lastName} {firstName}</Typography>
+              </a>
             </Box>
           </FlexBetween>
           <EditOutlined sx={{ color: main }} />
@@ -139,7 +144,10 @@ const UserWidget = ({ userId, picturePath }) => {
               <Typography color={main} fontWeight="500">
                 Github
               </Typography>
-              <Typography color={medium}>Social Network</Typography>
+              <a href= { github } >
+              <Typography 
+               color={medium}>{lastName} {firstName}</Typography>
+              </a>
             </Box>
           </FlexBetween>
           <EditOutlined sx={{ color: main }} />
@@ -152,7 +160,10 @@ const UserWidget = ({ userId, picturePath }) => {
               <Typography color={main} fontWeight="500">
                 Linkedin
               </Typography>
-              <Typography color={medium}>Network Platform</Typography>
+              <a href={linkedin}>
+              <Typography 
+               color={medium}>{lastName} {firstName}</Typography>
+              </a>
             </Box>
           </FlexBetween>
           <EditOutlined sx={{ color: main }} />
