@@ -11,7 +11,7 @@ import {
   useMediaQuery,
 } from "@mui/material";
 import {
-  Search,
+
   Message,
   DarkMode,
   LightMode,
@@ -67,39 +67,30 @@ const Navbar = () => {
         >
           Share
         </Typography>
-        {isNonMobileScreens && (
-          <FlexBetween
+       
+        { isNonMobileScreens && (
+        <>
+       <FlexBetween
             backgroundColor={neutralLight}
             borderRadius="9px"
             gap="3rem"
             padding="0.1rem 1.5rem"
-          >
-            <InputBase placeholder="Search..." />
-            <IconButton>
-              <Search />
-            </IconButton>
-          </FlexBetween>
-          
-          
-        )}
-         <FlexBetween
-            backgroundColor={neutralLight}
-            borderRadius="9px"
-            gap="3rem"
-            padding="0.1rem 1.5rem"
-            ml={15}
-          >
-            {dateTime.toLocaleDateString()}
-          </FlexBetween>
-          <FlexBetween
-            backgroundColor={neutralLight}
-            borderRadius="9px"
-            gap="3rem"
-            padding="0.1rem 1.5rem"
-            ml={15}
+            ml={35}
           >
             {dateTime.toLocaleTimeString()}
           </FlexBetween>
+          <FlexBetween
+            backgroundColor={neutralLight}
+            borderRadius="9px"
+            gap="3rem"
+            padding="0.1rem 1.5rem"
+            ml={45}
+          >
+            {dateTime.toLocaleDateString()}
+          </FlexBetween>
+          </>
+          ) }
+          
       </FlexBetween>
 
       {/* DESKTOP NAV */}
@@ -112,9 +103,7 @@ const Navbar = () => {
               <LightMode sx={{ color: dark, fontSize: "25px" }} />
             )}
           </IconButton>
-          <Message sx={{ fontSize: "25px" }} />
-          <Notifications sx={{ fontSize: "25px" }} />
-          <Help sx={{ fontSize: "25px" }} />
+         
           <FormControl variant="standard" value={fullName}>
             <Select
               value={fullName}
@@ -187,9 +176,7 @@ const Navbar = () => {
                 <LightMode sx={{ color: dark, fontSize: "25px" }} />
               )}
             </IconButton>
-            <Message sx={{ fontSize: "25px" }} />
-            <Notifications sx={{ fontSize: "25px" }} />
-            <Help sx={{ fontSize: "25px" }} />
+            
             <FormControl variant="standard" value={fullName}>
               <Select
                 value={fullName}
