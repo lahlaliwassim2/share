@@ -28,7 +28,9 @@ import { setPosts } from "state";
 const MyPostWidget = ({ picturePath }) => {
   const dispatch = useDispatch();
   const [isImage, setIsImage] = useState(false);
+  const [isPdf, setIsPdf] = useState(false);
   const [image, setImage] = useState(null);
+  const [pdf, setPdf] = useState(null);
   const [post, setPost] = useState("");
   const { palette } = useTheme();
   const { _id } = useSelector((state) => state.user);
@@ -45,6 +47,10 @@ const MyPostWidget = ({ picturePath }) => {
       formData.append("picture", image);
       formData.append("picturePath", image.name);
     }
+    if (pdf) {
+      formData.append("pdf", pdf);
+      formData.append("pdfPath", pdf.name);
+    }
 
     const response = await fetch(`http://localhost:3001/posts`, {
       method: "POST",
@@ -54,6 +60,7 @@ const MyPostWidget = ({ picturePath }) => {
     const posts = await response.json();
     dispatch(setPosts({ posts }));
     setImage(null);
+    setPdf(null);
     setPost("");
   };
 
@@ -81,9 +88,16 @@ const MyPostWidget = ({ picturePath }) => {
           p="1rem"
         >
           <Dropzone
-            acceptedFiles=".jpg,.jpeg,.png"
+            acceptedFiles=".jpg,.jpeg,.png,.pdf"
             multiple={false}
-            onDrop={(acceptedFiles) => setImage(acceptedFiles[0])}
+            onDrop={(acceptedFiles) => {
+              const file = acceptedFiles[0];
+              if (file.type === "application/pdf") {
+                setPdf(file);
+              } else {
+                setImage(file);
+              }
+            }}
           >
             {({ getRootProps, getInputProps }) => (
               <FlexBetween>
@@ -103,6 +117,7 @@ const MyPostWidget = ({ picturePath }) => {
                       <EditOutlined />
                     </FlexBetween>
                   )}
+
                 </Box>
                 {image && (
                   <IconButton
@@ -117,7 +132,50 @@ const MyPostWidget = ({ picturePath }) => {
           </Dropzone>
         </Box>
       )}
-
+        {isPdf && (
+        <Box
+          border={`1px solid ${medium}`}
+          borderRadius="5px"
+          mt="1rem"
+          p="1rem"
+        >
+          <Dropzone
+            acceptedFiles=".jpg,.jpeg,.png,.pdf"
+            multiple={false}
+            onDrop={(acceptedFiles) => setPdf(acceptedFiles[0])}
+          >
+            {({ getRootProps, getInputProps }) => (
+              <FlexBetween>
+                <Box
+                  {...getRootProps()}
+                  border={`2px dashed ${palette.primary.main}`}
+                  p="1rem"
+                  width="100%"
+                  sx={{ "&:hover": { cursor: "pointer" } }}
+                >
+                  <input {...getInputProps()} />
+                  {!pdf ? (
+                    <p>Add file Here</p>
+                  ) : (
+                    <FlexBetween>
+                      <Typography>{pdf.name}</Typography>
+                      <EditOutlined />
+                    </FlexBetween>
+                  )}
+                </Box>
+                {pdf && (
+                  <IconButton
+                    onClick={() => setPdf(null)}
+                    sx={{ width: "15%" }}
+                  >
+                    <DeleteOutlined />
+                  </IconButton>
+                )}
+              </FlexBetween>
+            )}
+          </Dropzone>
+        </Box>
+      )}
       <Divider sx={{ margin: "1.25rem 0" }} />
 
       <FlexBetween>
@@ -138,10 +196,19 @@ const MyPostWidget = ({ picturePath }) => {
               <Typography color={mediumMain}>Clip</Typography>
             </FlexBetween>
 
-            <FlexBetween gap="0.25rem">
+            {/* <FlexBetween gap="0.25rem">
               <AttachFileOutlined sx={{ color: mediumMain }} />
               <Typography color={mediumMain}>Attachment</Typography>
-            </FlexBetween>
+            </FlexBetween> */}
+            <FlexBetween gap="0.25rem" onClick={() => setIsPdf(!isPdf)}>
+          <ImageOutlined sx={{ color: mediumMain }} />
+          <Typography
+            color={mediumMain}
+            sx={{ "&:hover": { cursor: "pointer", color: medium } }}
+          >
+            Fichier
+          </Typography>
+        </FlexBetween>
 
             <FlexBetween gap="0.25rem">
               <MicOutlined sx={{ color: mediumMain }} />
