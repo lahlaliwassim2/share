@@ -1,4 +1,4 @@
-import {Typography, useTheme } from "@mui/material";
+import {Button, Typography, useTheme } from "@mui/material";
 import FlexBetween from "components/FlexBetween";
 import WidgetWrapper from "components/WidgetWrapper";
 import { useEffect, useState } from "react";
@@ -45,9 +45,10 @@ const AdvertWidget = () => {
       <Typography color={medium} m="0.5rem 0">
         {joke.value}
       </Typography>
-      <button
+      <Button
+      borderRadius={25}
       onClick={getJoke}
-      >Voir une autre</button>
+      >Voir une autre</Button>
     </WidgetWrapper>
   );
 };
